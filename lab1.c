@@ -56,7 +56,7 @@ void modify_add(){
    char new_ID[25];
    int flag=0;
    printf("Enter the student ID whose address need to be modified\n");
-   scanf("%[^\n]s",new_ID);
+   scanf("%s",new_ID);
    FILE *fp=fopen("student_info.txt","r");
    if(fp==NULL){
      printf("Error opening the file\n");
@@ -68,11 +68,11 @@ void modify_add(){
      printf("Error opening the file\n");
      return;
    }
-   while(fscanf(fp,"%s\t%s\t%s\t%s\t%s\n",st.SID,st.name,st.branch,st.semester,
+   while(fscanf(fp,"%s%s%s%s%s",st.SID,st.name,st.branch,st.semester,
    st.address)!=EOF){
      if (strcmp(st.SID,new_ID)==0){
         printf("Enter the new address of the student\n");
-        scanf("%[^\n]s",st.address);
+        scanf("%s",st.address);
           flag=1;
      }
            fprintf(fp1,"%s\t%s\t%s\t%s\t%s\n",st.SID,st.name,st.branch,st.semester,
@@ -98,7 +98,7 @@ void delete_st(){
      int flag=0;
      
    printf("Enter the student ID whose entry in the file is to be deleted\n");
-   scanf("%[^\n]s",new_ID);
+   scanf("%s",new_ID);
    FILE *fp=fopen("student_info.txt","r");
    if(fp==NULL){
      printf("Error opening the file\n");
@@ -109,7 +109,7 @@ void delete_st(){
      printf("Error opening the file\n");
      return;
    }
-   while(fscanf(fp,"%s\t%s\t%s\t%s\t%s\n",st.SID,st.name,st.branch,st.semester,
+   while(fscanf(fp,"%s%s%s%s%s",st.SID,st.name,st.branch,st.semester,
    st.address)!=EOF){
      if (strcmp(st.SID,new_ID)!=0){
     fprintf(fp1,"%s\t%s\t%s\t%s\t%s\n",st.SID,st.name,st.branch,st.semester,
@@ -136,34 +136,39 @@ else{
 }
 
 void list_all(){
+    int flag=0;
     FILE *fp=fopen("student_info.txt","r");
     if(fp==NULL){
      printf("Error opening the file\n");
      return;
    } 
    
-   printf("The list of all the students\n"); while(fscanf(fp,"%s\t%s\t%s\t%s\t%s\n",st.SID,st.name,st.branch,st.semester,
+   printf("The list of all the students\n"); 
+   while(fscanf(fp,"%s%s%s%s%s",st.SID,st.name,st.branch,st.semester,
    st.address)!=EOF){
         printf("Student ID       :- %s\n",st.SID);
         printf("Student Name     :- %s\n",st.name);
         printf("Student Branch   :- %s\n",st.branch);
         printf("Student Semester :- %s\n",st.semester);
         printf("Student Address  :- %s\n",st.address);
-        printf("\n\n");
-          
+        printf("\n\n");flag=1;
+   }
+   if(flag==0){
+       printf("There is no student present in the given file\n");
    }
    fclose(fp);
 }
 
 void list_cse(){
-
+     int flag=0;
       FILE *fp=fopen("student_info.txt","r");
     if(fp==NULL){
      printf("Error opening the file\n");
      return;
    } 
    
-   printf("The list of all the students of CSE branch\n"); while(fscanf(fp,"%s\t%s\t%s\t%s\t%s\n",st.SID,st.name,st.branch,st.semester,
+   printf("The list of all the students of CSE branch\n"); 
+   while(fscanf(fp,"%s%s%s%s%s",st.SID,st.name,st.branch,st.semester,
    st.address)!=EOF){
         if(strcmp(st.branch,"CSE")==0){
         printf("Student ID       :- %s\n",st.SID);
@@ -172,19 +177,25 @@ void list_cse(){
         printf("Student Semester :- %s\n",st.semester);
         printf("Student Address  :- %s\n",st.address);
         printf("\n\n");
+        flag=1;
         }  
+   }
+   if(flag==0){
+       printf("there is no student present in CSE in the file\n");
    }
    fclose(fp); 
 }
 
 void list_cse_kuv(){
+    int flag=0;
     FILE *fp=fopen("student_info.txt","r");
     if(fp==NULL){
      printf("Error opening the file\n");
      return;
    } 
    
-   printf("The list of all the students of CSE branch and residing in kuvenpunagar\n"); while(fscanf(fp,"%s\t%s\t%s\t%s\t%s\n",st.SID,st.name,st.branch,st.semester,
+   printf("The list of all the students of CSE branch and residing in kuvenpunagar\n"); 
+   while(fscanf(fp,"%s%s%s%s%s",st.SID,st.name,st.branch,st.semester,
    st.address)!=EOF){
         if(strcmp(st.branch,"CSE")==0 && strcmp(st.address,"kuvempunagar")==0){
         printf("Student ID       :- %s\n",st.SID);
@@ -193,7 +204,11 @@ void list_cse_kuv(){
         printf("Student Semester :- %s\n",st.semester);
         printf("Student Address  :- %s\n",st.address);
         printf("\n\n");
+        flag=1;
         }  
+   }
+   if(flag==0){
+       printf("there is no student of whose branch is CSE and reside in kuvempunagar\n");
    }
    fclose(fp);
 }
