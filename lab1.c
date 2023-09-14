@@ -256,9 +256,11 @@ int main() {
             case 7:
                 exit(0);
                 printf("\n");
+                break;
             default:
                 printf("Invalid choice!!!\n");
                 printf("\n");
+                break;
         }
     }
 
