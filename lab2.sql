@@ -61,3 +61,4 @@ WHERE BRANCH = "CSE";
 -- List all the students of CSE branch and reside in Kuvempunagar.
 SELECT * FROM student
 WHERE BRANCH = "CSE" AND ADDRESS = "Kuvempunagar";
+
