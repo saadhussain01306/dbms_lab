@@ -161,7 +161,7 @@ ALTER TABLE BOAT
 ADD location VARCHAR(100);
 
 -- dropping feilds
--- Dropping the 'color' field from the BOAT table
+-- Dropping the 'loctaion 'field from the BOAT table
 ALTER TABLE BOAT
 DROP COLUMN location;
 
