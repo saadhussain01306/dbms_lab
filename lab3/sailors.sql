@@ -171,7 +171,7 @@ DROP COLUMN location;
 -- update rating of john
 UPDATE SAILORS
 SET rating = 4.9
-WHERE sname = '601';
+WHERE sid = 601;
 
 
 -- update color of boat1
