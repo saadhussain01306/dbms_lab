@@ -69,7 +69,7 @@ INSERT INTO SAILORS (sid, sname, rating, age) VALUES
 INSERT INTO BOAT (bid, bname, color) VALUES
     (701, 'Boat1', 'Blue'),
     (702, 'Boat2', 'Red'),
-    (703, 'Baot3', 'Green'),
+    (703, 'Boat3', 'Green'),
     (704, 'Boat4', 'Yellow'),
     (705, 'Boat5', 'White');
     
