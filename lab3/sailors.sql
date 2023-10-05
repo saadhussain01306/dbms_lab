@@ -139,7 +139,7 @@ SELECT * FROM RSERVERS;
 ALTER TABLE SAILORS
 ADD CONSTRAINT unique_email UNIQUE (email);
 
--- ensures that no two boats have the model year less than 1980 
+-- ensures that no boat have the model year less than 1980 
 ALTER TABLE BOAT
 ADD CONSTRAINT check_model_year CHECK (model >= 1980);
 
