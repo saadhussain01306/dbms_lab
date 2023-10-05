@@ -181,7 +181,7 @@ WHERE bname = 'Boat1';
 
 -- delete operations
 DELETE FROM SAILORS
-WHERE sname = 'PETER';
+WHERE sid = 603;
 
 DELETE FROM BOAT
 WHERE bid = 705;
