@@ -274,3 +274,54 @@ update salors table;
 | 604 | 704 | 2023-02-05 | 10:30:00       |
 | 605 | 705 | 2023-05-09 | 10:30:00       |
 +-----+-----+------------+----------------+
+-- adding the constraint unique_email
+UPDATE SAILORS
+    -> SET email="john@gmail.com"
+    -> WHERE sid IN (602,603,604);
+ERROR 1062 (23000): Duplicate entry 'john@gmail.com' for key 'SAILORS.unique_email'
+
+-- adding the check_model_year constraint in the boat table 
+UPDATE BOAT
+    -> SET model=1975
+    -> WHERE bid IN (702,703,705);
+ERROR 3819 (HY000): Check constraint 'check_model_year' is violated.
+
+-- adding the location field in the boat table
++-----+-------+--------+-------+----------+
+| bid | bname | color  | model | LOCATION |
++-----+-------+--------+-------+----------+
+| 701 | Boat1 | Blue   |  1995 | NULL     |
+| 702 | Boat2 | Red    |  1995 | NULL     |
+| 703 | Boat3 | Green  |  1995 | NULL     |
+| 704 | Boat4 | Yellow |  1995 | NULL     |
+| 705 | Boat5 | White  |  1995 | NULL     |
++-----+-------+--------+-------+----------+
+-- dropping the location field in the boat table
++-----+-------+--------+-------+
+| bid | bname | color  | model |
++-----+-------+--------+-------+
+| 701 | Boat1 | Blue   |  1995 |
+| 702 | Boat2 | Red    |  1995 |
+| 703 | Boat3 | Green  |  1995 |
+| 704 | Boat4 | Yellow |  1995 |
+| 705 | Boat5 | White  |  1995 |
++-----+-------+--------+-------+
+
+-- update operatios
+UPDATE BOAT 
+    -> SET color="Green"
+    -> WHERE bid=701;
++-----+-------+-------+-------+
+| bid | bname | color | model |
++-----+-------+-------+-------+
+| 701 | Boat1 | Green |  1995 |
++-----+-------+-------+-------+
+UPDATE SAILORS
+    -> SET rating=4.9
+    -> WHERE sid=601;
++-----+-------+--------+------+----------------+
+| sid | sname | rating | age  | email          |
++-----+-------+--------+------+----------------+
+| 601 | JOHN  |    4.9 |   30 | john@gmail.com |
++-----+-------+--------+------+----------------+
+
