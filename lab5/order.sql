@@ -221,15 +221,15 @@ WHERE order_=202;
 
 UPDATE Order_
 SET delivery_add = 'Address3'
-WHERE order_=303;
+WHERE order_=203;
 
 UPDATE Order_
 SET delivery_add = 'Address4'
-WHERE order_=304;
+WHERE order_=204;
 
 UPDATE Order_
 SET delivery_add = 'Address5'
-WHERE order_=305;
+WHERE order_=205;
 
 -- check the added field
 SELECT * FROM Order_;
