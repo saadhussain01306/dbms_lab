@@ -250,7 +250,7 @@ ADD delivery_exe VARCHAR(100);
 
 UPDATE Shipment
 SET delivery_exe= "executive1"
-WHERE order_ IN (201,202,303,304,305);
+WHERE order_ IN (201,202,203,204,205);
 
 -- check 
 SELECT * FROM Shipment;
