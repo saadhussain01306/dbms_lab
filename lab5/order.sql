@@ -265,6 +265,8 @@ DROP COLUMN delivery_exe;
 ALTER TABLE Shipment
 ADD cancellation_status ENUM('yes', 'no');
 
+ALTER TABLE Shipment ALTER cancellation_status SET DEFAULT "No";
+
 
 
 -- OUTPUT:-
