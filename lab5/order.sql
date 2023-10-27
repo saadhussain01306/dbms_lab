@@ -148,31 +148,31 @@ SELECT * FROM Shipment;
 -- alter the Order_  table
 -- add the estimated delivery date
 
-ALTER TABLE Order_
+ALTER TABLE order_
 ADD est_delivery DATE;
 
-UPDATE Order_
+UPDATE order_
 SET est_delivery = '2023-05-23'
 WHERE order_=201;
 
-UPDATE Order_
+UPDATE order_
 SET est_delivery = '2023-05-24'
 WHERE order_=202;
 
-UPDATE Order_
+UPDATE order_
 SET est_delivery = '2023-05-25'
 WHERE order_=203;
 
-UPDATE Order_
+UPDATE order_
 SET est_delivery = '2023-05-26'
 WHERE order_=204;
 
-UPDATE Order_
+UPDATE order_
 SET est_delivery = '2023-05-27'
 WHERE order_=205;
 
 -- check if the table is altered or not
-SELECT * FROM Order_;
+SELECT * FROM order_;
 
 
 -- alter the Item table
@@ -263,10 +263,7 @@ DROP COLUMN delivery_exe;
 -- is the order cancelled or not
 
 ALTER TABLE Shipment
-ADD cancellation_status ENUM('yes', 'no');
-
-ALTER TABLE Shipment ALTER cancellation_status SET DEFAULT "No";
-
+ADD cancellation_status ENUM('yes', 'no') DEFAULT 'no';
 
 
 -- OUTPUT:-
@@ -383,4 +380,48 @@ SELECT * FROM Shipment;
 |    204 |       904 | 2023-05-04 |
 |    205 |       905 | 2023-05-05 |
 +--------+-----------+------------+
+-- altering table order_ add estimated delivery date
++--------+------------+------+-----------+--------------+
+| order_ | odate      | cust | order_amt | est_delivery |
++--------+------------+------+-----------+--------------+
+|    201 | 2023-04-11 |  101 |      1567 | 2023-05-23   |
+|    202 | 2023-04-12 |  102 |      2567 | 2023-05-24   |
+|    203 | 2023-04-13 |  103 |      3567 | 2023-05-25   |
+|    204 | 2023-04-14 |  104 |      4567 | 2023-05-26   |
+|    205 | 2023-04-15 |  105 |      5567 | 2023-05-27   |
++--------+------------+------+-----------+--------------+
+ -- altering Item table adding delivery cost
++------+-----------+---------------+
+| item | unitprice | delivery_cost |
++------+-----------+---------------+
+| 1001 |       100 |            80 |
+| 1002 |       200 |            80 |
+| 1003 |       300 |            80 |
+| 1004 |       400 |            80 |
+| 1005 |       500 |            80 |
++------+-----------+---------------+
 
+-- upadte commands
+-- adding dilvery executive column in shipment table
++--------+-----------+------------+---------------------+--------------+
+| order_ | warehouse | ship_date  | cancellation_status | delivery_exe |
++--------+-----------+------------+---------------------+--------------+
+|    201 |       901 | 2023-05-01 | no                  | executive1   |
+|    202 |       902 | 2023-05-02 | no                  | executive1   |
+|    203 |       903 | 2023-05-03 | no                  | executive1   |
+|    204 |       904 | 2023-05-04 | no                  | executive1   |
+|    205 |       905 | 2023-05-05 | no                  | executive1   |
++--------+-----------+------------+---------------------+--------------+
+    
+ALTER TABLE Shipment
+ADD cancellation_status ENUM('yes', 'no') DEFAULT 'no';
+
++--------+-----------+------------+---------------------+
+| order_ | warehouse | ship_date  | cancellation_status |
++--------+-----------+------------+---------------------+
+|    201 |       901 | 2023-05-01 | no                  |
+|    202 |       902 | 2023-05-02 | no                  |
+|    203 |       903 | 2023-05-03 | no                  |
+|    204 |       904 | 2023-05-04 | no                  |
+|    205 |       905 | 2023-05-05 | no                  |
++--------+-----------+------------+---------------------+
