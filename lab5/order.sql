@@ -264,3 +264,59 @@ DROP COLUMN delivery_exe;
 
 ALTER TABLE Shipment
 ADD cancellation_status ENUM('yes', 'no');
+
+
+
+-- OUTPUT:-
+DESC Customer;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cust  | int         | NO   | PRI | NULL    |       |
+| cname | varchar(50) | YES  |     | NULL    |       |
+| city  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+
+DESC order_;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| order_    | int  | NO   | PRI | NULL    |       |
+| odate     | date | YES  |     | NULL    |       |
+| cust      | int  | YES  | MUL | NULL    |       |
+| order_amt | int  | YES  |     | NULL    |       |
++-----------+------+------+-----+---------+-------+
+DESC Item;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| item      | int  | NO   | PRI | NULL    |       |
+| unitprice | int  | YES  |     | NULL    |       |
++-----------+------+------+-----+---------+-------+
+
+DESC OrderItem;
++--------+------+------+-----+---------+-------+
+| Field  | Type | Null | Key | Default | Extra |
++--------+------+------+-----+---------+-------+
+| order_ | int  | NO   | PRI | NULL    |       |
+| item   | int  | NO   | PRI | NULL    |       |
+| qty    | int  | YES  |     | NULL    |       |
++--------+------+------+-----+---------+-------+
+DESC Warehouse;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| warehouse | int          | NO   | PRI | NULL    |       |
+| city      | varchar(100) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+DESC Shipment;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| order_    | int  | NO   | PRI | NULL    |       |
+| warehouse | int  | NO   | PRI | NULL    |       |
+| ship_date | date | YES  |     | NULL    |       |
++-----------+------+------+-----+---------+-------+
+
+
+
