@@ -223,7 +223,7 @@ WHERE PNo=701;
 
 -- further operations
 TRUNCATE TABLE WORKS_ON;  -- delete the contents of the table without actually dropping the table
--- the table remains with all the operations
+-- the table remains with all the existing attributes with no data inside it
 
 -- check
 SELECT * FROM WORKS_ON;
