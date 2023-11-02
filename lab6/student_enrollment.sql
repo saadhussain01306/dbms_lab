@@ -191,7 +191,7 @@ ADD CONSTRAINT uq_regno UNIQUE (regno);
 -- droping constraints
 -- drop constraints
 ALTER TABLE STUDENT
-DROP INDEX uq_regno;
+DROP CONSTRAINT uq_regno;
 
 
 -- adding and dropping fields
