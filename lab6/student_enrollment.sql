@@ -202,7 +202,7 @@ ADD COLUMN enrollment_date DATE;
 
 -- dropping fields
 ALTER TABLE ENROLL
-ADD COLUMN enrollment_date DATE;
+DROP COLUMN enrollment_date DATE;
 
 -- delete and update operations
 DELETE FROM STUDENT
