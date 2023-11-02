@@ -222,4 +222,4 @@ WHERE regno = 'S4';
 -- check if book returned or not
 
 ALTER TABLE BOOK_ADOPTION
-ADD return_status ENUM('yes', 'no');
+ADD return_status ENUM('yes', 'no') DEFAULT 'no';
