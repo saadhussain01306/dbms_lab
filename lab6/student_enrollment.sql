@@ -124,7 +124,33 @@ INSERT INTO BOOK_ADOPTION (course, sem, book_ISBN) VALUES
 
 -- check
 SELECT * FROM BOOK_ADOPTION;
- 
+
+-- Find out who scored the highest marks amongst all the students
+
+SELECT STUDENT.regno, STUDENT.name, MAX(ENROLL.marks) AS highest_marks
+FROM ENROLL
+INNER JOIN STUDENT ON ENROLL.regno = STUDENT.regno
+GROUP BY STUDENT.regno, STUDENT.name
+ORDER BY highest_marks DESC
+LIMIT 1;
+
+-- list the students according to the marks scored(highest to lowest)
+SELECT STUDENT.regno, STUDENT.name, MAX(ENROLL.marks) AS highest_marks
+FROM ENROLL
+INNER JOIN STUDENT ON ENROLL.regno = STUDENT.regno
+GROUP BY STUDENT.regno, STUDENT.name
+ORDER BY highest_marks DESC;
+
+-- List the students according to DOB(Youngest to Oldest)
+SELECT regno, name, bdate
+FROM STUDENT
+ORDER BY bdate ASC;
+
+-- List the corse name in alphabetical order
+SELECT course, cname, dept
+FROM COURSE
+ORDER BY cname ASC;
+
 -- alter the tables
 
 -- alter the STUDENT
