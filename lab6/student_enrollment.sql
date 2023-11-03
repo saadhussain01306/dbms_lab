@@ -223,3 +223,134 @@ WHERE regno = 'S4';
 
 ALTER TABLE BOOK_ADOPTION
 ADD return_status ENUM('yes', 'no') DEFAULT 'no';
+
+
+-- output:-
+DESC STUDENT;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| regno | varchar(40)  | NO   | PRI | NULL    |       |
+| name  | varchar(100) | YES  |     | NULL    |       |
+| major | varchar(100) | YES  |     | NULL    |       |
+| bdate | date         | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+DESC COURSE;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| course | int          | NO   | PRI | NULL    |       |
+| cname  | varchar(100) | YES  |     | NULL    |       |
+| dept   | varchar(100) | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+DESC ENROLL;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| regno  | varchar(40) | NO   | PRI | NULL    |       |
+| course | int         | YES  | MUL | NULL    |       |
+| sem    | int         | YES  |     | NULL    |       |
+| marks  | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+DESC TEXT;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| book_ISBN | int          | NO   | PRI | NULL    |       |
+| title     | varchar(100) | YES  |     | NULL    |       |
+| publisher | varchar(100) | YES  |     | NULL    |       |
+| author    | varchar(100) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+DESC BOOK_ADOPTION;
++-----------+------+------+-----+---------+-------+
+| Field     | Type | Null | Key | Default | Extra |
++-----------+------+------+-----+---------+-------+
+| course    | int  | YES  | MUL | NULL    |       |
+| sem       | int  | YES  |     | NULL    |       |
+| book_ISBN | int  | NO   | PRI | NULL    |       |
++-----------+------+------+-----+---------+-------+
+
+SELECT * FROM STUDENT;
++-------+-------+-----------+------------+
+| regno | name  | major     | bdate      |
++-------+-------+-----------+------------+
+| S1    | JOHN  | Computer  | 2000-03-15 |
+| S2    | PETER | History   | 2000-03-16 |
+| S3    | JACK  | Chemistry | 2000-03-17 |
+| S4    | YASH  | Maths     | 2000-03-18 |
+| S5    | KEVIN | Physics   | 2000-03-19 |
++-------+-------+-----------+------------+
+
+SELECT * FROM COURSE;
++--------+----------------------------------+------------------+
+| course | cname                            | dept             |
++--------+----------------------------------+------------------+
+|   1001 | Computer Science and Engineering | Computer Science |
+|   1002 | World History                    | History          |
+|   1003 | Physical Chemistry               | Chemistry        |
+|   1004 | Calculus                         | Mathematics      |
+|   1005 | Quantum Physics                  | Physics          |
++--------+----------------------------------+------------------+
+
+SELECT * FROM ENROLL;
++-------+--------+------+-------+
+| regno | course | sem  | marks |
++-------+--------+------+-------+
+| S1    |   1001 |    1 |    90 |
+| S2    |   1002 |    2 |    91 |
+| S3    |   1003 |    3 |    92 |
+| S4    |   1004 |    4 |    93 |
+| S5    |   1005 |    5 |    94 |
++-------+--------+------+-------+
+
+SELECT * FROM TEXT;
++-----------+----------------------+-----------+----------+
+| book_ISBN | title                | publisher | author   |
++-----------+----------------------+-----------+----------+
+|      2001 | Programming in C     | Smith     | Henry    |
+|      2002 | World History        | Marsh     | Mitchell |
+|      2003 | Physical Chemistry-1 | David     | Starc    |
+|      2004 | Calculus-1           | Ben       | Tom      |
+|      2005 | Quantum Mechanics    | Root      | Newton   |
++-----------+----------------------+-----------+----------+
+
+SELECT * FROM BOOK_ADOPTION;
++--------+------+-----------+
+| course | sem  | book_ISBN |
++--------+------+-----------+
+|   1001 |    1 |      2001 |
+|   1002 |    2 |      2002 |
+|   1003 |    3 |      2003 |
+|   1004 |    4 |      2004 |
+|   1005 |    5 |      2005 |
++--------+------+-----------+
+
+-- student who scored the highest marks
++-------+-------+---------------+
+| regno | name  | highest_marks |
++-------+-------+---------------+
+| S5    | KEVIN |            94 |
++-------+-------+---------------+
+ 
+--- list the students accordig to the marks (highest to lowest)
++-------+-------+---------------+
+| regno | name  | highest_marks |
++-------+-------+---------------+
+| S5    | KEVIN |            94 |
+| S4    | YASH  |            93 |
+| S3    | JACK  |            92 |
+| S2    | PETER |            91 |
+| S1    | JOHN  |            90 |
++-------+-------+---------------+
+
+-- List the students according to DOB(Youngest to Oldest)   
++-------+-------+------------+
+| regno | name  | bdate      |
++-------+-------+------------+
+| S1    | JOHN  | 2000-03-15 |
+| S2    | PETER | 2000-03-16 |
+| S3    | JACK  | 2000-03-17 |
+| S4    | YASH  | 2000-03-18 |
+| S5    | KEVIN | 2000-03-19 |
++-------+-------+------------+
+
