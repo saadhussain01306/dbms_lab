@@ -354,3 +354,46 @@ SELECT * FROM BOOK_ADOPTION;
 | S5    | KEVIN | 2000-03-19 |
 +-------+-------+------------+
 
+-- order by cname(alphabetically)
++--------+----------------------------------+------------------+
+| course | cname                            | dept             |
++--------+----------------------------------+------------------+
+|   1004 | Calculus                         | Mathematics      |
+|   1001 | Computer Science and Engineering | Computer Science |
+|   1003 | Physical Chemistry               | Chemistry        |
+|   1005 | Quantum Physics                  | Physics          |
+|   1002 | World History                    | History          |
++--------+----------------------------------+------------------+
+-- alter table students 
++-------+-------+-----------+------------+-----------------+
+| regno | name  | major     | bdate      | email           |
++-------+-------+-----------+------------+-----------------+
+| S1    | JOHN  | Computer  | 2000-03-15 | john@gmail.com  |
+| S2    | PETER | History   | 2000-03-16 | peter@gmail.com |
+| S3    | JACK  | Chemistry | 2000-03-17 | jack@gmail.com  |
+| S4    | YASH  | Maths     | 2000-03-18 | yash@gmail.com  |
+| S5    | KEVIN | Physics   | 2000-03-19 | kevin@gmail.com |
++-------+-------+-----------+------------+-----------------+
+-- delete s2 student
+SELECT * FROM STUDENT WHERE regno='S4';
+Empty set (0.00 sec)
+
+-- update major
+SELECT * FROM STUDENT WHERE regno='S3';
++-------+------+----------------------------------+------------+----------------+
+| regno | name | major                            | bdate      | email          |
++-------+------+----------------------------------+------------+----------------+
+| S3    | JACK | Computer Science and Engineering | 2000-03-17 | jack@gmail.com |
++-------+------+----------------------------------+------------+----------------+
+
+-- alter BBOK_ADOPTION add return_status
++--------+------+-----------+---------------+
+| course | sem  | book_ISBN | return_status |
++--------+------+-----------+---------------+
+|   1001 |    1 |      2001 | no            |
+|   1002 |    2 |      2002 | no            |
+|   1003 |    3 |      2003 | no            |
+|   1004 |    4 |      2004 | no            |
+|   1005 |    5 |      2005 | no            |
++--------+------+-----------+---------------+
+
