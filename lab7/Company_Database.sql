@@ -217,7 +217,7 @@ SET Salary = 20000.00
 WHERE SSN = 112;
 
 -- Delete Operations
--- Delete project from the project status
+-- Delete project from the project list
 DELETE FROM PROJECT
 WHERE PNo=701;
 
