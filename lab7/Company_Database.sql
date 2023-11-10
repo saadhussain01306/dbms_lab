@@ -208,7 +208,7 @@ DROP CONSTRAINT UniqueName;
 -- add project completion status
 
 ALTER TABLE PROJECT
-ADD Project_completion_status ENUM('yes', 'no','In Progress');
+ADD Project_completion_status ENUM('yes', 'no','In Progress') DEFAULT 'In Progress';
 
 -- Update and Delete operations
 -- Update an employee's salary
@@ -227,3 +227,196 @@ TRUNCATE TABLE WORKS_ON;  -- delete the contents of the table without actually d
 
 -- check
 SELECT * FROM WORKS_ON;
+
+-- output:-
+ DESC EMPLOYEE;
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| SSN      | int           | NO   | PRI | NULL    |       |
+| Name     | varchar(100)  | YES  |     | NULL    |       |
+| Address  | varchar(200)  | YES  |     | NULL    |       |
+| Sex      | char(10)      | YES  |     | NULL    |       |
+| Salary   | decimal(10,2) | YES  |     | NULL    |       |
+| SuperSSN | int           | YES  |     | NULL    |       |
+| DNo      | int           | YES  | MUL | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+DESC DEPARTMENT;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| DNo          | int         | NO   | PRI | NULL    |       |
+| DName        | varchar(50) | YES  |     | NULL    |       |
+| MgrSSN       | int         | YES  | MUL | NULL    |       |
+| MgrStartDate | date        | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+ DESC DLOCATION;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| DNo   | int          | NO   | PRI | NULL    |       |
+| DLoc  | varchar(200) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+DESC PROJECT;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| PNo       | int          | NO   | PRI | NULL    |       |
+| PName     | varchar(50)  | YES  |     | NULL    |       |
+| PLocation | varchar(100) | YES  |     | NULL    |       |
+| DNo       | int          | YES  | MUL | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+DESC WORKS_ON;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| SSN   | int          | NO   | PRI | NULL    |       |
+| PNo   | int          | NO   | PRI | NULL    |       |
+| Hours | decimal(6,2) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+SELECT * FROM EMPLOYEE;
++-----+--------+----------+--------+-----------+----------+------+
+| SSN | Name   | Address  | Sex    | Salary    | SuperSSN | DNo  |
++-----+--------+----------+--------+-----------+----------+------+
+| 111 | JOHN   | 1st Main | Male   |  60000.00 |      112 |    1 |
+| 112 | EMMA   | 2nd Main | Female | 150000.00 |     NULL |    3 |
+| 113 | STARC  | 3rd Main | Male   |  70000.00 |      112 |    4 |
+| 114 | SOPHIE | 4th Main | Female |  80000.00 |      112 |    5 |
+| 115 | SMITH  | 5th Main | Female |  90000.00 |      112 |    5 |
++-----+--------+----------+--------+-----------+----------+------+
+SELECT * FROM DEPARTMENT;
++-----+-----------------------+--------+--------------+
+| DNo | DName            SELECT * FROM WORKS_ON;
++-----+-----+--------+
+| SSN | PNo | Hours  |
++-----+-----+--------+
+| 111 | 701 | 120.10 |
+| 112 | 702 | 130.21 |
+| 113 | 704 | 130.41 |
+| 114 | 704 | 150.21 |
+| 115 | 705 |  90.89 |
++-----+-----+--------+
+     | MgrSSN | MgrStartDate |
++-----+-----------------------+--------+--------------+
+|   1 | Finance Department    |    113 | 2020-01-10   |
+|   2 | Marketing Department  |    114 | 2020-02-10   |
+|   3 | Research Department   |    115 | 2020-03-10   |
+|   4 | Sales Department      |    115 | 2020-04-10   |
+|   5 | Production Department |    112 | 2020-05-10   |
++-----+-----------------------+--------+--------------+
+SELECT * FROM DLOCATION;
++-----+--------------+
+| DNo | DLoc         |
++-----+--------------+
+|   1 | London       |
+|   2 | USA          |
+|   3 | Qatar        |
+|   4 | South Africa |
+|   5 | Australia    |
++-----+--------------+
+SELECT * FROM PROJECT;
++-----+----------+DELETE FROM PROJECT
+    -> WHERE PNo=701;
+--------------+------+
+| PNo | PName    | PLocation    | DNo  |
++-----+----------+--------------+------+
+| 701 | Project1 | London       |    1 |
+| 702 | Project2 | USA          |    2 |
+| 703 | Project3 | Qatar        |    3 |
+| 704 | Project4 | South Africa |    4 |
+| 705 | Project5 | Australia    |    5 |
++-----+----------+--------------+------+
+SELECT * FROM WORKS_ON;
++-----+-----+--------+
+| SSN | PNo | Hours  |
++-----+-----+--------+
+| 111 | 701 | 120.10 |
+| 112 | 702 | 130.21 |
+| 113 | 704 | 130.41 |
+| 114 | 704 | 150.21 |
+| 115 | 705 |  90.89 |
++-----+-----+--------+
+
+-- complex queries
+-- Find the sum of the TotalHours required for the project completion
++----------+------------+
+| PName    | TotalHours |
++----------+------------+
+| Project1 |     120.10 |
++----------+------------+
+UPDATE WORKS_ON
+    -> SET PNo=704
+    -> WHERE SSN=113;
+
+SELECT * FROM WORKS_ON;
++-----+-----+--------+
+| SSN | PNo | Hours  |
++-----+-----+--------+
+| 111 | 701 | 120.10 |
+| 112 | 702 | 130.21 |
+| 113 | 704 | 130.41 |
+| 114 | 704 | 150.21 |
+| 115 | 705 |  90.89 |
++-----+-----+--------+
+SELECT PName, SUM(Hours) AS TotalHours
+    -> FROM WORKS_ON
+    -> INNER JOIN PROJECT ON WORKS_ON.PNo = PROJECT.PNo
+    -> WHERE PROJECT.PNo = 704
+    -> GROUP BY PName;
++----------+------------+
+| PName    | TotalHours |
++----------+------------+
+| Project4 |     280.62 |
++----------+------------+
+
+-- update DOB
+ SELECT * FROM EMPLOYEE;
++-----+--------+----------+--------+-----------+----------+------+------+
+| SSN | Name   | Address  | Sex    | Salary    | SuperSSN | DNo  | DOB  |
++-----+--------+----------+--------+-----------+----------+------+------+
+| 111 | JOHN   | 1st Main | Male   |  60000.00 |      112 |    1 | NULL |
+| 112 | EMMA   | 2nd Main | Female | 150000.00 |     NULL |    3 | NULL |
+| 113 | STARC  | 3rd Main | Male   |  70000.00 |      112 |    4 | NULL |
+| 114 | SOPHIE | 4th Main | Female |  80000.00 |      112 |    5 | NULL |
+| 115 | SMITH  | 5th Main | Female |  90000.00 |      112 |    5 | NULL |
++-----+--------+----------+--------+-----------+----------+------+------+
+
+  -- update the department_expenditure in department table
+SELECT * FROM DEPARTMENT;
++-----+-----------------------+--------+--------------+------------------------+
+| DNo | DName                 | MgrSSN | MgrStartDate | Department_Expenditure |
++-----+-----------------------+--------+--------------+------------------------+
+|   1 | Finance Department    |    113 | 2020-01-10   |                   NULL |
+|   2 | Marketing Department  |    114 | 2020-02-10   |                   NULL |
+|   3 | Research Department   |    115 | 2020-03-10   |                   NULL |
+|   4 | Sales Department      |    115 | 2020-04-10   |                   NULL |
+|   5 | Production Department |    112 | 2020-05-10   |                   NULL |
++-----+-----------------------+--------+--------------+------------------------+
+  
+-- truncate works_on
+TRUNCATE TABLE WORKS_ON;
+
+
+SELECT * FROM WORKS_ON;
+Empty set (0.00 sec)
+
+ALTER TABLE PROJECT
+    -> ADD Project_completion_status ENUM('yes', 'no','In Progress') DEFAULT 'In Progress';
+
+SELECT * FROM PROJECT;
++-----+----------+--------------+------+---------------------------+
+| PNo | PName    | PLocation    | DNo  | Project_completion_status |
++-----+----------+--------------+------+---------------------------+
+| 701 | Project1 | London       |    1 | In Progress               |
+| 702 | Project2 | USA          |    2 | In Progress               |
+| 703 | Project3 | Qatar        |    3 | In Progress               |
+| 704 | Project4 | South Africa |    4 | In Progress               |
+| 705 | Project5 | Australia    |    5 | In Progress               |
++-----+----------+--------------+------+---------------------------+
+
+-- delete operation
+DELETE FROM PROJECT
+    -> WHERE PNo=701;
+  
+ SELECT PNo FROM PROJECT WHERE PNo=701;
+Empty set (0.00 sec)
