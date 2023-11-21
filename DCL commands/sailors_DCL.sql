@@ -1,3 +1,5 @@
+@HUSSAIN
+
 /*Data Manipulation Language (DML) and Data Control Language 
 (DCL)
 Write valid DML statements to retrieve tuples from the databases. The 
@@ -55,5 +57,5 @@ by default it sorts in ascneding order is ASEC or DESC is not specified*/
 SELECT * FROM SAILORS WHERE rating > 2.0 ORDER BY rating DESC;
 SELECT * FROM SAILORS WHERE rating > 2.0 ORDER BY rating;-- by default in descending order
 
-                                       @HUSSAIN
+                                       
 -- more operations to be done
