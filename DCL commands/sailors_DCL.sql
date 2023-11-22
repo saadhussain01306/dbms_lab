@@ -1,6 +1,4 @@
-@HUSSAIN
-
-/*Data Manipulation Language (DML) and Data Control Language 
+  /*Data Manipulation Language (DML) and Data Control Language 
 (DCL)
 Write valid DML statements to retrieve tuples from the databases. The 
 query may contain appropriate DML and DCL commands such as:
@@ -18,6 +16,8 @@ Nested and correlated nested Queries
 Grant and revoke permission
 
 */
+
+@S_HUSSAIN WORKBENCH
 
 /*The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
 
@@ -57,5 +57,72 @@ by default it sorts in ascneding order is ASEC or DESC is not specified*/
 SELECT * FROM SAILORS WHERE rating > 2.0 ORDER BY rating DESC;
 SELECT * FROM SAILORS WHERE rating > 2.0 ORDER BY rating;-- by default in descending order
 
-                                       
--- more operations to be done
+-- SET operations
+
+-- UNION operation
+SELECT sid,sname FROM SAILORS
+UNION
+SELECT bid,bname FROM BOAT;  -- combines the both column entries into single column sname
+
+
+DELETE FROM RSERVERS
+WHERE sid = 603;
+
+-- INTERSECT operation ( there is no INTERSECT command in Mysql instead we use this sub query)
+SELECT sid,sname FROM SAILORS
+WHERE sid IN (SELECT sid FROM RSERVERS);
+
+-- MINUS opearation
+-- Retrieve a list of sailors who did not make any reservations using NOT IN command
+SELECT sname FROM SAILORS
+WHERE sid NOT IN (SELECT sid FROM RSERVERS);
+
+
+-- EXISTS  NOT EXISTS
+-- this operator returns true or false value 
+
+-- EXISTS
+SELECT * FROM SAILORS WHERE EXISTS 
+(SELECT * FROM RSERVERS WHERE SAILORS.sid=RSERVERS.sid); 
+-- selects all the rows for which the exists condition is true
+
+-- NOT EXISTS
+SELECT * FROM SAILORS WHERE NOT EXISTS 
+(SELECT * FROM RSERVERS WHERE SAILORS.sid=RSERVERS.sid); 
+-- selects all the rows for which the exists condition is false
+
+-- JOIN
+-- it is used to combine row from two or more tables ,based on a related column between them
+-- INNER JOIN,LEFT JOIN,RIGHT JOIN
+
+-- INNER JOIN
+SELECT * FROM SAILORS
+JOIN RSERVERS
+ON SAILORS.sid=RSERVERS.sid;
+
+-- LEFT JOIN
+SELECT * FROM SAILORS
+LEFT JOIN RSERVERS
+ON SAILORS.sid=RSERVERS.sid;
+
+-- RIGHT JOIN
+SELECT * FROM SAILORS
+RIGHT JOIN RSERVERS
+ON SAILORS.sid=RSERVERS.sid;
+
+-- Aggregate functions
+-- count,sum,min,max,avg
+
+-- count() returns the total numbers of rows in the table
+-- sum() returns the total sum of the numeric column
+-- avg() calculates the avergae values of the set of values
+-- min() returns lowest value in a set of non-null values
+-- max() returns largest value in a set of non-null values
+
+SELECT count(sid) FROM SAILORS WHERE rating>4.0; -- returns total sailors whose rating is more than 4
+SELECT sum(age) FROM SAILORS;
+SELECT avg(age) FROM SAILORS;
+SELECT min(sid) FROM RSERVERS;
+SELECT max(bid) FROM BOAT;
+
+-- GROUP BY 
