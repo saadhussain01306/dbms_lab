@@ -126,3 +126,21 @@ SELECT min(sid) FROM RSERVERS;
 SELECT max(bid) FROM BOAT;
 
 -- GROUP BY 
+
+UPDATE SAILORS
+SET rating=4.1 WHERE sid=601;
+
+
+-- GROUP BY
+SELECT COUNT(sid),rating
+FROM SAILORS
+GROUP BY rating;
+-- shows the number of sailors who have the same rating
+
+-- GROUP BY HAVING
+-- HAVING condition is used because WHERE clause cannot be used in aggregate functions
+
+SELECT COUNT(sid),rating
+FROM SAILORS
+GROUP BY rating
+HAVING COUNT(sid)>1;
