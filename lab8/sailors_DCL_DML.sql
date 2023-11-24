@@ -362,11 +362,11 @@ SELECT * FROM SAILORS WHERE EXISTS
 
 
 
--- grant 
+-- grant command
 GRANT select ON hussain.boat TO 'JOHN'@'localhost';
 ERROR 1142 (42000): GRANT command denied to user 'sem5d1'@'localhost' for table 'boat'
 
--- revoke
+-- revoke command
 
 REVOKE select ON hussain.boat FROM 'JOHN'@'localhost';
 ERROR 1142 (42000): GRANT command denied to user 'sem5d1'@'localhost' for table 'boat'
