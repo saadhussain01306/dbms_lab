@@ -256,6 +256,24 @@ ON SAILORS.sid=RSERVERS.sid;
 |  605 | KEVIN |    3.9 |   28 | kevin@gmail.com | 605 | 705 | 2023-05-09 | 10:30:00       |
 +------+-------+--------+------+-----------------+-----+-----+------------+----------------+
 
+-- FULL OUTER JOIN 
+SELECT * FROM SAILORS
+LEFT JOIN RSERVERS
+ON SAILORS.sid=RSERVERS.sid
+UNION
+SELECT * FROM SAILORS
+RIGHT JOIN RSERVERS
+ON SAILORS.sid=RSERVERS.sid; 
+
++------+-------+--------+------+-----------------+------+------+------------+----------------+
+| sid  | sname | rating | age  | email           | sid  | bid  | date       | Departure_time |
++------+-------+--------+------+-----------------+------+------+------------+----------------+
+|  601 | JOHN  |    4.1 |   30 | john@gmail.com  |  601 |  701 | 2023-07-01 | 10:30:00       |
+|  602 | JAMES |    4.1 |   31 | james@gmail.com |  602 |  702 | 2023-05-01 | 10:30:00       |
+|  603 | PETER |    3.5 |   29 | peter@gmail.com | NULL | NULL | NULL       | NULL           |
+|  604 | ROCK  |    4.2 |   26 | rock@gmail.com  |  604 |  704 | 2023-02-05 | 10:30:00       |
+|  605 | KEVIN |    3.9 |   28 | kevin@gmail.com |  605 |  705 | 2023-05-09 | 10:30:00       |
++------+-------+--------+------+-----------------+------+------+------------+----------------+
 
 -- Aggregate functions
 -- count,sum,min,max,avg
