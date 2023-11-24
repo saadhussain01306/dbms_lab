@@ -174,6 +174,11 @@ WHERE sid IN (SELECT sid FROM RSERVERS);
 SELECT sname FROM SAILORS
 WHERE sid NOT IN (SELECT sid FROM RSERVERS);
 
++-------+
+| sname |
++-------+
+| PETER |
++-------+
 
 
 -- EXISTS  NOT EXISTS
