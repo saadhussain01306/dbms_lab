@@ -121,7 +121,7 @@ CREATE TRIGGER AfterInsertStudent
 AFTER INSERT ON STUDENT
 FOR EACH ROW
 INSERT INTO ENROLL (regno, course, sem, marks)
-VALUES (NEW.regno, DEFAULT, DEFAULT, DEFAULT);
+VALUES (NEW.regno,NEW.name,NEW.major,NEW.bdate);
 
 -- Insert a new student
 INSERT INTO STUDENT (regno, name, major, bdate) 
