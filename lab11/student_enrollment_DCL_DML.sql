@@ -35,13 +35,16 @@ SELECT * FROM STUDENT WHERE major = 'Computer';
 SELECT * FROM STUDENT ORDER BY bdate ASC;
 
 -- union
+-- Union of students majoring in Computer Science or Physics
 SELECT * FROM STUDENT WHERE major = 'Computer'
 UNION
 SELECT * FROM STUDENT WHERE major = 'Physics';
 
+-- Select students who have enrolled in a course
 SELECT * FROM STUDENT WHERE EXISTS (SELECT * FROM ENROLL WHERE ENROLL.regno = STUDENT.regno);
 
 -- join
+-- Inner Join to get student details along with enrolled courses
 SELECT STUDENT.regno, STUDENT.name, ENROLL.course, ENROLL.sem
 FROM STUDENT
 INNER JOIN ENROLL ON STUDENT.regno = ENROLL.regno;
@@ -74,15 +77,18 @@ WHERE STUDENT.regno IS NULL;  -- To exclude duplicates
 
 
 -- aggregate functions
+-- Calculate average marks for each student
 SELECT regno, AVG(marks) AS avg_marks
 FROM ENROLL
 GROUP BY regno;
 
+--Group courses by department and count the number of courses in each department
 -- group by
 SELECT dept, COUNT(course) AS num_courses
 FROM COURSE
 GROUP BY dept;
 
+-- Display departments with more than 1 course
 -- group by having
 SELECT dept, COUNT(course) AS num_courses
 FROM COURSE
