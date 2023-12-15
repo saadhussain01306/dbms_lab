@@ -39,3 +39,31 @@ SELECT DISTINCT SAILORS.sid
 | 604 |
 +-----+
 /* Find the names of sailors who have not reserved a boat whose name contains the string “storm”. Order the names in ascending order. */
+SELECT S.sname FROM SAILORS S WHERE S.sid NOT IN 
+  (SELECT R.sid FROM RSERVERS R JOIN BOAT B ON R.bid = B.bid 
+  WHERE B.bname LIKE '%at2%' ) 
+  ORDER BY S.sname ASC;
++--------+
+| sname  |
++--------+
+| Albert |
+| KEVIN  |
+| PETER  |
+| ROCK   |
++--------+
+
+-- 4.	Find the names of sailors who have reserved all boats.   
+SELECT S.sname
+FROM SAILORS S
+WHERE NOT EXISTS (
+    SELECT B.bid
+    FROM BOAT B
+    WHERE NOT EXISTS (
+        SELECT R.bid
+        FROM RSERVERS R
+        WHERE R.sid = S.sid AND R.bid = B.bid
+    )
+);
+Empty set (0.00 sec)
+
+
