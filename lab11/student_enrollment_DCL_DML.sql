@@ -239,11 +239,10 @@ SELECT * FROM StudentCourseMarks;
 --  Create a trigger that automatically inserts a record into the ENROLL table when a new student is added.
 
 -- Create a trigger
-CREATE TRIGGER AfterInsertStudent
-AFTER INSERT ON STUDENT
-FOR EACH ROW
-INSERT INTO ENROLL (regno, course, sem, marks)
-VALUES (NEW.regno,NEW.name,NEW.major,NEW.bdate);
+CREATE TRIGGER AfterInsertStudent 
+ AFTER INSERT ON STUDENT 
+ FOR EACH ROW INSERT INTO ENROLL (regno, course, sem, marks) 
+ VALUES (New.regno,DEFAULT,DEFAULT,DEFAULT);
 
 -- Insert a new student
 INSERT INTO STUDENT (regno, name, major, bdate) 
