@@ -28,7 +28,7 @@ CREATE TABLE OrderItem (
     order_ INT,
     item INT,
     qty INT,
-    PRIMARY KEY (order_, item),
+    PRIMARY KEY (order_),
     FOREIGN KEY (order_) REFERENCES Order_(order_) ON DELETE CASCADE,
     FOREIGN KEY (item) REFERENCES Item(item) ON DELETE CASCADE
 );
