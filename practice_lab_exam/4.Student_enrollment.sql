@@ -106,15 +106,21 @@ GROUP BY BA.course, BA.book_ISBN, T.title
 HAVING COUNT(BA.book_ISBN) >0
 ORDER BY T.title ;
 
+
 -- 3. List any department that has all its adopted books published by a specific publisher. 
-SELECT DISTINCT C.dept
-FROM COURSE C
-WHERE EXISTS (
-    SELECT 1
-    FROM BOOK_ADOPTION BA
-    JOIN TEXT T ON BA.book_ISBN = T.book_ISBN
-    WHERE C.course = BA.course AND T.publisher = 'The Times'
+SELECT DISTINCT dept FROM
+COURSE WHERE dept IN(
+	SELECT dept FROM COURSE JOIN BOOK_ADOPTION 
+    USING(course) JOIN TEXT USING(book_ISBN) 
+    WHERE publisher='Delphi Classics'
+)
+AND 
+dept NOT IN(
+	SELECT dept FROM COURSE JOIN BOOK_ADOPTION 
+    USING(course) JOIN TEXT USING(book_ISBN) 
+    WHERE publisher<>'Delphi Classics'
 );
+
 
 -- 4. List the students who have scored maximum marks in ‘DBMS’ course.
 SELECT S.regno, S.name, E.marks
