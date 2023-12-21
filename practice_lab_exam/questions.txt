@@ -20,6 +20,8 @@ the average age of such sailors.
 7. Create a view that shows the names and colours of all the boats that have been reserved by 
 a sailor with a specific rating.
 8. A trigger that prevents boats from being deleted If they have active reservations. 
+
+
 2. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
 specified.
@@ -40,6 +42,7 @@ PARTICIPATED(driver id#:string, regno:string, report_ number: int,damage_amount:
 with report. 
 6. A view that shows models and year of cars that are involved in accident. 
 7. A trigger that prevents a driver from participating in more than 3 accidents in a given year.
+
 
 3. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
@@ -64,7 +67,8 @@ customer. (Use aggregate functions)
 5. Find the item with the maximum unit price. 
 6. A trigger that updates order_amout based on quantity and unitprice of order_item
 7. Create a view to display orderID and shipment date of all orders shipped from a warehouse 
-5. 
+
+
 4. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
 specified.
@@ -86,6 +90,7 @@ order for courses offered by the ‘CS’ department that use more than two book
 5. Create a view to display all the courses opted by a student along with marks obtained.
 6. Create a trigger that prevents a student from enrolling in a course if the marks 
 prerequisite is less than 40.
+
 
 5. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
