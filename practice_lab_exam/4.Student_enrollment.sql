@@ -156,3 +156,4 @@ VALUES ('01HF999', 'John Doe', 'Computer Science', '2000-01-01');
 
 INSERT INTO ENROLL (regno, course, sem, marks)
 VALUES ('01HF999', 1, 7, 32);
+-- Marks prerequisite not met for enrollment
