@@ -44,7 +44,7 @@ CREATE TABLE Shipment (
     order_ INT,
     warehouse INT,
     ship_date DATE,
-    PRIMARY KEY (order_, warehouse),
+    PRIMARY KEY (order_),
     FOREIGN KEY (order_) REFERENCES Order_(order_) ON DELETE CASCADE,
     FOREIGN KEY (warehouse) REFERENCES Warehouse(warehouse) ON DELETE CASCADE
 );
