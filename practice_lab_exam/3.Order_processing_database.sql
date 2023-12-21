@@ -154,7 +154,7 @@ DELIMITER ;
 INSERT INTO Item (item, unitprice) VALUES (1006, 600);
 
 -- Insert a new order with the new item
-INSERT INTO Order_ (order_, odate, cust, order_amt) VALUES (206, '2023-04-16', 101, NULL);
+INSERT INTO Order_ (order_, odate, cust, order_amt) VALUES (206, '2023-04-16', 102, NULL);
 
 -- Insert the new item into the order
 INSERT INTO OrderItem (order_, item, qty) VALUES (206, 1006, 5);
