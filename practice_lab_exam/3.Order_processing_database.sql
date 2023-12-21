@@ -144,7 +144,7 @@ BEFORE INSERT ON OrderItem
 FOR EACH ROW
 BEGIN
     UPDATE Order_
-    SET order_amt = order_amt + (NEW.qty * (SELECT unitprice FROM Item WHERE item = NEW.item))
+    SET order_amt = NEW.qty *(SELECT unitprice FROM Item WHERE item = NEW.item)
     WHERE order_ = NEW.order_;
 END //
 DELIMITER ;
@@ -154,7 +154,7 @@ DELIMITER ;
 INSERT INTO Item (item, unitprice) VALUES (1006, 600);
 
 -- Insert a new order with the new item
-INSERT INTO Order_ (order_, odate, cust, order_amt) VALUES (206, '2023-04-16', 101, 0);
+INSERT INTO Order_ (order_, odate, cust, order_amt) VALUES (206, '2023-04-16', 101, NULL);
 
 -- Insert the new item into the order
 INSERT INTO OrderItem (order_, item, qty) VALUES (206, 1006, 5);
