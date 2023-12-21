@@ -111,10 +111,11 @@ WHERE s.warehouse = 2;
 -- 2. List the Warehouse information from which the Customer named "Kumar" was supplied his 
 -- orders. Produce a listing of Order#, Warehouse#.
 
-SELECT o.order_, s.warehouse
+SELECT o.order_, s.warehouse,w.city
 FROM Order_ o
 JOIN Shipment s ON o.order_ = s.order_
 JOIN Customer c ON o.cust = c.cust
+JOIN Warehouse w ON s.warehouse = w.warehouse
 WHERE c.cname = 'Kumar';
 
 -- 3. Produce a listing: Cname, #ofOrders, Avg_Order_Amt, where the middle column is the total 
