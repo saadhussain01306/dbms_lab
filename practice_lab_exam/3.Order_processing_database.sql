@@ -54,11 +54,11 @@ CREATE TABLE Shipment (
 -- Insert data into the Customer table
 INSERT INTO Customer (cust, cname, city) 
 VALUES
-    (101, 'Kumar', 'Wcity1'),
-    (102, 'Peter', 'Wcity2'),
-    (103, 'James', 'Wcity3'),
-    (104, 'Kevin', 'Wcity4'),
-    (105, 'Harry', 'Wcity5');
+    (101, 'Kumar', 'City1'),
+    (102, 'Peter', 'City2'),
+    (103, 'James', 'City3'),
+    (104, 'Kevin', 'City4'),
+    (105, 'Harry', 'City5');
     
 -- Insert data into the Order table
 INSERT INTO Order_(order_, odate, cust, order_amt) 
@@ -88,11 +88,11 @@ INSERT INTO OrderItem (order_, item, qty) VALUES
 
 -- Insert Data in Warehouse
 INSERT INTO Warehouse (warehouse, city) VALUES
-    (1, 'City1'),
-    (2, 'City2'),
-    (3, 'City3'),
-    (4, 'City4'),
-    (5, 'City5');
+    (1, 'Wcity1'),
+    (2, 'Wcity2'),
+    (3, 'Wcity3'),
+    (4, 'Wcity4'),
+    (5, 'Wcity5');
     
 -- Insert data into Shipment Table
 INSERT INTO Shipment (order_, warehouse, ship_date) VALUES
