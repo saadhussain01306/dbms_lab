@@ -1,5 +1,5 @@
-CREATE DATABASE COMPANY;
-USE COMPANY;
+CREATE DATABASE COMPANY_2;
+USE COMPANY_2;
 
   -- Create the EMPLOYEE table
 CREATE TABLE EMPLOYEE (
@@ -130,7 +130,7 @@ VALUES
 -- queries
 
 -- 1. Make a list of all project numbers for projects that involve an employee whose last name 
-SELECT DISTINCT P.PNo
+SELECT DISTINCT P.PNo,E.Name
 FROM PROJECT P
 JOIN WORKS_ON W ON P.PNo = W.PNo
 JOIN EMPLOYEE E ON W.SSN = E.SSN OR E.SSN = P.DNo
@@ -161,7 +161,7 @@ JOIN DEPARTMENT D ON E.DNo = D.DNo
 WHERE D.DName = 'Accounts';
 
 -- 4. Retrieve the name of each employee who works on all the projects controlled by 
---department number 5 (use NOT EXISTS operator). 
+-- department number 5 (use NOT EXISTS operator). 
 SELECT E.Name
 FROM EMPLOYEE E
 WHERE NOT EXISTS (
@@ -210,3 +210,4 @@ DELIMITER ;
 
 -- CHECK trigger
 DELETE FROM PROJECT WHERE PNo=702;
+-- The project cannot be deleted as it has an assigned employee
