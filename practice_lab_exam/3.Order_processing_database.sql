@@ -54,11 +54,11 @@ CREATE TABLE Shipment (
 -- Insert data into the Customer table
 INSERT INTO Customer (cust, cname, city) 
 VALUES
-    (101, 'Kumar', 'City1'),
-    (102, 'Peter', 'City2'),
-    (103, 'James', 'City3'),
-    (104, 'Kevin', 'City4'),
-    (105, 'Harry', 'City5');
+    (101, 'Kumar', 'Wcity1'),
+    (102, 'Peter', 'Wcity2'),
+    (103, 'James', 'Wcity3'),
+    (104, 'Kevin', 'Wcity4'),
+    (105, 'Harry', 'Wcity5');
     
 -- Insert data into the Order table
 INSERT INTO Order_(order_, odate, cust, order_amt) 
