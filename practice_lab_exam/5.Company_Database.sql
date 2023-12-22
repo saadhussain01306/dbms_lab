@@ -52,7 +52,6 @@ CREATE TABLE WORKS_ON (
     SSN INT,
     PNo INT,
     Hours DECIMAL(6, 2), -- number of hours the employee works on the project
-    PRIMARY KEY (SSN, PNo),
     FOREIGN KEY (SSN) REFERENCES EMPLOYEE(SSN) ON DELETE CASCADE,
     FOREIGN KEY (PNo) REFERENCES PROJECT(PNo) ON DELETE CASCADE
 );
