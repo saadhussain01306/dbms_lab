@@ -132,7 +132,7 @@ VALUES
 SELECT DISTINCT P.PNo,E.Name
 FROM PROJECT P
 JOIN WORKS_ON W ON P.PNo = W.PNo
-JOIN EMPLOYEE E ON W.SSN = E.SSN OR E.SSN = P.DNo
+JOIN EMPLOYEE E ON W.SSN = E.SSN OR E.DNo = P.DNo
 WHERE E.Name = 'Scott';
 
 -- 2. Show the resulting salaries if every employee working on the ‘IoT’ project is given a 10 
