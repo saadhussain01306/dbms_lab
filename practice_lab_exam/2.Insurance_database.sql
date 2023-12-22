@@ -104,11 +104,10 @@ WHERE reg_no="KA-09-MA-1234"
 AND report_no=65738;
 
 -- 6. A view that shows models and year of cars that are involved in accident. 
-CREATE VIEW AccidentCars AS
-SELECT DISTINCT C.model, C.c_year
-FROM CAR C
-JOIN OWNS O ON C.reg_no = O.reg_no
-JOIN PARTICIPATED PA ON O.reg_no = PA.reg_no;
+
+CREATE OR REPLACE VIEW AccidentCars AS
+SELECT DISTINCT model, c_year
+FROM car JOIN participated USING(reg_no);
 
 -- check view
 SELECT * FROM AccidentCars;
