@@ -1,5 +1,5 @@
-<h1>Programs for DBMS LAB @JSSSTU</h1> 
-<h2></h2>20CS57L Database Management Systems Laboratory</h2>
+<h1>Programs for DBMS LAB @JSSSTU</h1>
+<h2>20CS57L Database Management Systems Laboratory</h2>
 
 <h1>List of Programs</h1>
 
@@ -19,45 +19,45 @@ Sailors database</h3>
 <ul>
     <li>RSERVERS (sid, bid, date)</li>
 </ul>
-Queries, View and Trigger
-<ul>
+<!-- Query 1 -->
+<ol>
     <li>Find the colours of boats reserved by Albert</li>
-</ul>
+</ol>
 
 <!-- Query 2 -->
-<ul>
+<ol>
     <li>Find all sailor id’s of sailors who have a rating of at least 8 or reserved boat 103</li>
-</ul>
+</ol>
 
 <!-- Query 3 -->
-<ul>
+<ol>
     <li>Find the names of sailors who have not reserved a boat whose name contains the string “storm”. Order the names in ascending order.</li>
-</ul>
+</ol>
 
 <!-- Query 4 -->
-<ul>
+<ol>
     <li>Find the names of sailors who have reserved all boats.</li>
-</ul>
+</ol>
 
 <!-- Query 5 -->
-<ul>
+<ol>
     <li>Find the name and age of the oldest sailor.</li>
-</ul>
+</ol>
 
 <!-- Query 6 -->
-<ul>
+<ol>
     <li>For each boat which was reserved by at least 5 sailors with age >= 40, find the boat id and the average age of such sailors.</li>
-</ul>
+</ol>
 
 <!-- Query 7 -->
-<ul>
+<ol>
     <li>Create a view that shows the names and colours of all the boats that have been reserved by a sailor with a specific rating.</li>
-</ul>
+</ol>
 
 <!-- Query 8 -->
-<ul>
+<ol>
     <li>A trigger that prevents boats from being deleted If they have active reservations.</li>
-</ul>
+</ol>
 
 
 <h3>2. Consider the database schemas given below.
@@ -84,39 +84,39 @@ Insurance database</h3>
 </ul>
 
 <!-- Query 1 -->
-<ul>
+<ol>
     <li>Find the total number of people who owned cars that were involved in accidents in 2021.</li>
-</ul>
+</ol>
 
 <!-- Query 2 -->
-<ul>
+<ol>
     <li>Find the number of accidents in which the cars belonging to “Smith” were involved.</li>
-</ul>
+</ol>
 
 <!-- Query 3 -->
-<ul>
+<ol>
     <li>Add a new accident to the database; assume any values for required attributes.</li>
-</ul>
+</ol>
 
 <!-- Query 4 -->
-<ul>
+<ol>
     <li>Delete the Mazda belonging to “Smith”.</li>
-</ul>
+</ol>
 
 <!-- Query 5 -->
-<ul>
+<ol>
     <li>Update the damage amount for the car with license number “KA09MA1234” in the accident with report.</li>
-</ul>
+</ol>
 
 <!-- Query 6 -->
-<ul>
+<ol>
     <li>A view that shows models and year of cars that are involved in accident.</li>
-</ul>
+</ol>
 
 <!-- Query 7 -->
-<ul>
+<ol>
     <li>A trigger that prevents a driver from participating in more than 3 accidents in a given year.</li>
-</ul>
+</ol>
 
 
 <h3>3. Consider the database schemas given below.
@@ -146,39 +146,39 @@ Order processing database</h3>
 </ul>
 
 <!-- Query 1 -->
-<ul>
+<ol>
     <li>List the Order# and Ship_date for all orders shipped from Warehouse# "W2".</li>
-</ul>
+</ol>
 
 <!-- Query 2 -->
-<ul>
+<ol>
     <li>List the Warehouse information from which the Customer named "Kumar" was supplied his orders. Produce a listing of Order#, Warehouse#.</li>
-</ul>
+</ol>
 
 <!-- Query 3 -->
-<ul>
+<ol>
     <li>Produce a listing: Cname, #ofOrders, Avg_Order_Amt, where the middle column is the total number of orders by the customer and the last column is the average order amount for that customer. (Use aggregate functions).</li>
-</ul>
+</ol>
 
 <!-- Query 4 -->
-<ul>
+<ol>
     <li>Delete all orders for customer named "Kumar".</li>
-</ul>
+</ol>
 
 <!-- Query 5 -->
-<ul>
+<ol>
     <li>Find the item with the maximum unit price.</li>
-</ul>
+</ol>
 
 <!-- Query 6 -->
-<ul>
+<ol>
     <li>A trigger that updates order_amout based on quantity and unitprice of order_item.</li>
-</ul>
+</ol>
 
 <!-- Query 7 -->
-<ul>
+<ol>
     <li>Create a view to display orderID and shipment date of all orders shipped from a warehouse.</li>
-</ul>
+</ol>
 
 
 <h3>4. Consider the database schemas given below.
@@ -205,34 +205,34 @@ Student enrollment in courses and books adopted for each course</h3>
 </ul>
 
 <!-- Query 1 -->
-<ul>
+<ol>
     <li>Demonstrate how you add a new text book to the database and make this book be adopted by some department.</li>
-</ul>
+</ol>
 
 <!-- Query 2 -->
-<ul>
+<ol>
     <li>Produce a list of text books (include Course #, Book-ISBN, Book-title) in the alphabetical order for courses offered by the ‘CS’ department that use more than two books.</li>
-</ul>
+</ol>
 
 <!-- Query 3 -->
-<ul>
+<ol>
     <li>List any department that has all its adopted books published by a specific publisher.</li>
-</ul>
+</ol>
 
 <!-- Query 4 -->
-<ul>
+<ol>
     <li>List the students who have scored maximum marks in ‘DBMS’ course.</li>
-</ul>
+</ol>
 
 <!-- Query 5 -->
-<ul>
+<ol>
     <li>Create a view to display all the courses opted by a student along with marks obtained.</li>
-</ul>
+</ol>
 
 <!-- Query 6 -->
-<ul>
+<ol>
     <li>Create a trigger that prevents a student from enrolling in a course if the marks prerequisite is less than 40.</li>
-</ul>
+</ol>
 
 
 <h3>5. Consider the database schemas given below.
@@ -259,36 +259,36 @@ Company Database:</h3>
 </ul>
 
 <!-- Query 1 -->
-<ul>
+<ol>
     <li>Make a list of all project numbers for projects that involve an employee whose last name is ‘Scott’, either as a worker or as a manager of the department that controls the project.</li>
-</ul>
+</ol>
 
 <!-- Query 2 -->
-<ul>
+<ol>
     <li>Show the resulting salaries if every employee working on the ‘IoT’ project is given a 10 percent raise.</li>
-</ul>
+</ol>
 
 <!-- Query 3 -->
-<ul>
+<ol>
     <li>Find the sum of the salaries of all employees of the ‘Accounts’ department, as well as the maximum salary, the minimum salary, and the average salary in this department.</li>
-</ul>
+</ol>
 
 <!-- Query 4 -->
-<ul>
+<ol>
     <li>Retrieve the name of each employee who works on all the projects controlled by department number 5 (use NOT EXISTS operator).</li>
-</ul>
+</ol>
 
 <!-- Query 5 -->
-<ul>
+<ol>
     <li>For each department that has more than five employees, retrieve the department number and the number of its employees who are making more than Rs. 6,00,000.</li>
-</ul>
+</ol>
 
 <!-- Query 6 -->
-<ul>
+<ol>
     <li>Create a view that shows name, dept name and location of all employees.</li>
-</ul>
+</ol>
 
 <!-- Query 7 -->
-<ul>
+<ol>
     <li>Create a trigger that prevents a project from being deleted if it is currently being worked by any employee.</li>
-</ul>
+</ol>
