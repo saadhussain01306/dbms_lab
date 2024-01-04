@@ -3,13 +3,13 @@
 
 <h1>List of Programs</h1>
 
+<h2>Sailors Database</h2>
 <h3>1. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types 
 are specified.
 Create tables for the following schema listed below by properly specifying the primary keys 
 and foreign keys.
-Enter at least five tuples for each relation.
-Sailors database</h3>
+Enter at least five tuples for each relation.</h3>
 <ol>
     <li>SAILORS (sid, sname, rating, age)</li>
     <li>BOAT(bid, bname, color)</li>
@@ -27,13 +27,13 @@ Sailors database</h3>
     <li>A trigger that prevents boats from being deleted If they have active reservations.</li>
 </ol>
 
+<h2>Insurance Database</h2>
 <h3>2. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
 specified.
 Create tables for the following schema listed below by properly specifying the primary keys and 
 foreign keys.
-Enter at least five tuples for each relation.
-Insurance database</h3>
+Enter at least five tuples for each relation.</h3>
 <ol>
     <li>PERSON (driver_id# <u>string</u>, name <u>string</u>, address <u>string</u>)</li>
     <li>CAR (regno <u>string</u>, model <u>string</u>, year <u>int</u>)</li>
@@ -52,13 +52,13 @@ Insurance database</h3>
     <li>A trigger that prevents a driver from participating in more than 3 accidents in a given year.</li>
 </ol>
 
+<h2>Order Processing Database</h2>
 <h3>3. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
 specified.
 Create tables for the following schema listed below by properly specifying the primary keys and 
 foreign keys.
-Enter at least five tuples for each relation.
-Order processing database</h3>
+Enter at least five tuples for each relation.</h3>
 <ol>
     <li>Customer (Cust# <u>int</u>, cname <u>string</u>, city <u>string</u>)</li>
     <li>Order (order# <u>int</u>, odate <u>date</u>, cust# <u>int</u>, order_amt <u>int</u>)</li>
@@ -78,13 +78,13 @@ Order processing database</h3>
     <li>Create a view to display orderID and shipment date of all orders shipped from a warehouse.</li>
 </ol>
 
+<h2>Student Enrollment Database</h2>
 <h3>4. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
 specified.
 Create tables for the following schema listed below by properly specifying the primary keys and 
 foreign keys.
-Enter at least five tuples for each relation.
-Student enrollment in courses and books adopted for each course</h3>
+Enter at least five tuples for each relation.</h3>
 <ol>
     <li>STUDENT (regno <u>string</u>, name <u>string</u>, major <u>string</u>, bdate <u>date</u>)</li>
     <li>COURSE (course# <u>int</u>, cname <u>string</u>, dept <u>string</u>)</li>
@@ -102,13 +102,13 @@ Student enrollment in courses and books adopted for each course</h3>
     <li>Create a trigger that prevents a student from enrolling in a course if the marks prerequisite is less than 40.</li>
 </ol>
 
+<h2>Company Database</h2>
 <h3>5. Consider the database schemas given below.
 Write ER diagram and schema diagram. The primary keys are underlined and the data types are 
 specified.
 Create tables for the following schema listed below by properly specifying the primary keys and 
 foreign keys.
-Enter at least five tuples for each relation.
-Company Database:</h3>
+Enter at least five tuples for each relation.</h3>
 <ol>
     <li>EMPLOYEE (SSN <u>int</u>, Name <u>string</u>, Address <u>string</u>, Sex <u>char</u>, Salary <u>int</u>, SuperSSN <u>int</u>, DNo <u>int</u>)</li>
     <li>DEPARTMENT (DNo <u>int</u>, DName <u>string</u>, MgrSSN <u>int</u>, MgrStartDate <u>date</u>)</li>
