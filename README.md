@@ -10,9 +10,15 @@ Create tables for the following schema listed below by properly specifying the p
 and foreign keys.
 Enter at least five tuples for each relation.
 Sailors database</h3>
-SAILORS (sid, sname, rating, age)
-BOAT(bid, bname, color)
-RSERVERS (sid, bid, date)
+<ul>
+    <li>SAILORS (sid, sname, rating, age)</li>
+</ul>
+<ul>
+    <li>BOAT(bid, bname, color)</li>
+</ul>
+<ul>
+    <li>RSERVERS (sid, bid, date)</li>
+</ul>
 Queries, View and Trigger
 <ul>
     <li>Find the colours of boats reserved by Albert</li>
