@@ -1,5 +1,5 @@
-CREATE DATABASE Student_enrollment2;
-USE Student_enrollment2;
+CREATE DATABASE Student_enrollment;
+USE Student_enrollment;
 
 -- Create table STUDENT
 CREATE TABLE STUDENT (
@@ -18,7 +18,7 @@ CREATE TABLE COURSE (
 
 -- Create table ENROLL
 CREATE TABLE ENROLL (
-    regno VARCHAR(40) PRIMARY KEY,
+    regno VARCHAR(40),
     course INT,
     sem INT,
     marks INT,
@@ -38,7 +38,7 @@ CREATE TABLE TEXT (
 CREATE TABLE BOOK_ADOPTION (
     course INT,
     sem INT,
-    book_ISBN INT PRIMARY KEY,
+    book_ISBN INT,
     FOREIGN KEY (course) REFERENCES COURSE(course)  ON DELETE CASCADE,
     FOREIGN KEY (book_ISBN) REFERENCES TEXT(book_ISBN)  ON DELETE CASCADE
 );
@@ -48,7 +48,8 @@ INSERT INTO STUDENT VALUES
 ("01HF354", "Student_2", "Literature", "2002-06-10"),
 ("01HF254", "Student_3", "Philosophy", "2000-04-04"),
 ("01HF653", "Student_4", "History", "2003-10-12"),
-("01HF234", "Student_5", "Computer Economics", "2001-10-10");
+("01HF234", "Student_5", "Computer Economics", "2001-10-10"),
+("01HF699", "Student_6", "Computer Economics", "2001-10-10");
 
 INSERT INTO COURSE VALUES
 (001, "DBMS", "CS"),
@@ -62,21 +63,26 @@ INSERT INTO ENROLL VALUES
 ("01HF354", 002, 6, 87),
 ("01HF254", 003, 3, 95),
 ("01HF653", 004, 3, 80),
-("01HF234", 005, 5, 75);
+("01HF234", 005, 5, 75),
+("01HF699", 001, 6, 90);
 
 INSERT INTO TEXT VALUES
 (241563, "Operating Systems", "Pearson", "Silberschatz"),
 (532678, "Complete Works of Shakesphere", "Oxford", "Shakesphere"),
 (453723, "Immanuel Kant", "Delphi Classics", "Immanuel Kant"),
 (278345, "History of the world", "The Times", "Richard Overy"),
-(426784, "Behavioural Economics", "Pearson", "David Orrel");
+(426784, "Behavioural Economics", "Pearson", "David Orrel"),
+(469691, "Code with Fun", "Tim David", "David Warner"),
+(767676, "Fun & philosophy","Delphi Classics", "Immanuel Kant");
 
 INSERT INTO BOOK_ADOPTION VALUES
 (001, 5, 241563),
 (002, 6, 532678),
 (003, 3, 453723),
 (004, 3, 278345),
-(001, 6, 426784);
+(001, 6, 426784),
+(001, 5, 469691),
+(003, 6, 767676);
 
 -- 1. Demonstrate how you add a new text book to the database and make this book be 
 -- adopted by some department.
@@ -93,19 +99,20 @@ INSERT INTO BOOK_ADOPTION VALUES
 -- check 
 SELECT * FROM BOOK_ADOPTION;
 
-
 -- 2. Produce a list of text books (include Course #, Book-ISBN, Book-title) in the alphabetical 
 -- order for courses offered by the ‘CS’ department that use more than two books. 
 
-SELECT BA.course, BA.book_ISBN, T.title
-FROM BOOK_ADOPTION BA
-JOIN TEXT T ON BA.book_ISBN = T.book_ISBN
-JOIN COURSE C ON BA.course = C.course
-WHERE C.dept = 'CS'
-GROUP BY BA.course, BA.book_ISBN, T.title
-HAVING COUNT(BA.book_ISBN) >0
-ORDER BY T.title ;
-
+SELECT course, book_ISBN, title
+FROM BOOK_ADOPTION 
+JOIN COURSE USING(course) 
+JOIN TEXT USING(book_ISBN) 
+WHERE dept="CS" 
+AND course IN (
+    SELECT course
+    FROM BOOK_ADOPTION 
+    GROUP BY course
+    HAVING COUNT(*) > 2
+);
 
 -- 3. List any department that has all its adopted books published by a specific publisher. 
 SELECT DISTINCT dept FROM
@@ -120,7 +127,6 @@ dept NOT IN(
     USING(course) JOIN TEXT USING(book_ISBN) 
     WHERE publisher<>'Delphi Classics'
 );
-
 
 -- 4. List the students who have scored maximum marks in ‘DBMS’ course.
 SELECT S.regno, S.name, E.marks
@@ -162,4 +168,5 @@ VALUES ('01HF999', 'John Doe', 'Computer Science', '2000-01-01');
 
 INSERT INTO ENROLL (regno, course, sem, marks)
 VALUES ('01HF999', 1, 7, 32);
+
 -- Marks prerequisite not met for enrollment
