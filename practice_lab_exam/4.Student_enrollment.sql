@@ -1,6 +1,12 @@
 CREATE DATABASE Student_enrollment;
 USE Student_enrollment;
 
+-- ->student
+-- 	->course
+-- 	         ->enroll
+-- 	                 ->text
+-- 	                        ->book_adoption
+
 -- Create table STUDENT
 CREATE TABLE STUDENT (
     regno VARCHAR(40) PRIMARY KEY,
