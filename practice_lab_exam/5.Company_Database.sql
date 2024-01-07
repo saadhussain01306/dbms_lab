@@ -120,6 +120,7 @@ WHERE SSN IN
 (SELECT PNo FROM PROJECT WHERE PName = 'IoT')); 
 
 -- Display the resulting salaries
+
 SELECT SSN, ENAME, Salary
 FROM EMPLOYEE
 WHERE SSN IN (SELECT SSN FROM WORKS_ON WHERE PNo IN (SELECT PNo FROM PROJECT WHERE PName = 'IoT'));
@@ -178,7 +179,8 @@ JOIN DLOCATION DL ON D.DNo = DL.DNo;
 SELECT * FROM EmployeeView;
 
 -- 7. Create a trigger that prevents a project from being deleted if it is currently being worked 
-by any employee.
+-- by any employee.
+
 DELIMITER //
 CREATE TRIGGER PREVENT_DELETE
 BEFORE DELETE ON PROJECT
@@ -192,5 +194,6 @@ END;
 DELIMITER ;
 
 -- CHECK trigger
+
 DELETE FROM PROJECT WHERE PNo=702;
 -- The project cannot be deleted as it has an assigned employee
