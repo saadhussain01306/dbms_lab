@@ -1,6 +1,15 @@
-CREATE DATABASE Order_processing2;
-USE Order_processing2;
+CREATE DATABASE Order_processing;
+USE Order_processing;
 
+
+ -- customer -> 
+ --          Order_ -> 
+ --               Item -> 
+ --                   OrderItem -> 
+ --                       Warehouse -> 
+ --                                 Shipment
+
+              
 -- create customer table
 CREATE TABLE Customer (
     cust INT PRIMARY KEY,
@@ -28,7 +37,6 @@ CREATE TABLE OrderItem (
     order_ INT,
     item INT,
     qty INT,
-    PRIMARY KEY (order_),
     FOREIGN KEY (order_) REFERENCES Order_(order_) ON DELETE CASCADE,
     FOREIGN KEY (item) REFERENCES Item(item) ON DELETE CASCADE
 );
@@ -44,7 +52,6 @@ CREATE TABLE Shipment (
     order_ INT,
     warehouse INT,
     ship_date DATE,
-    PRIMARY KEY (order_),
     FOREIGN KEY (order_) REFERENCES Order_(order_) ON DELETE CASCADE,
     FOREIGN KEY (warehouse) REFERENCES Warehouse(warehouse) ON DELETE CASCADE
 );
@@ -101,8 +108,8 @@ INSERT INTO Shipment (order_, warehouse, ship_date) VALUES
     (203, 3, '2023-05-03'),
     (204, 4, '2023-05-04'),
     (205, 5, '2023-05-05');
- 
- -- queries
+    
+-- queries
  -- 1. List the Order# and Ship_date for all orders shipped from Warehouse "2".   
 SELECT s.order_, s.ship_date
 FROM Shipment s
@@ -127,9 +134,13 @@ from Customer c, Order_ o
 where c.cust=o.cust 
 group by cname;
 
+
 -- 4. Delete all orders for customer named "Kumar".
 DELETE FROM Order_
 WHERE cust = (SELECT cust FROM Customer WHERE cname = 'Kumar');
+
+-- check if deleted
+SELECT * FROM Order_;
 
 -- 5. Find the item with the maximum unit price. 
 SELECT item,unitprice
@@ -161,7 +172,6 @@ INSERT INTO OrderItem (order_, item, qty) VALUES (206, 1006, 5);
 
 -- Check the updated order_amount using the trigger
 SELECT * FROM Order_;
-
 
 -- 7. Create a view to display orderID and shipment date of all orders shipped from a warehouse 5
 
