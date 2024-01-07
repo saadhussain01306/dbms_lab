@@ -146,9 +146,9 @@ LIMIT 1;
 
 -- 5. Create a view to display all the courses opted by a student along with marks obtained.
 CREATE OR REPLACE VIEW StudentCourses AS
-SELECT E.regno, E.course, C.cname, E.marks
-FROM ENROLL E
-JOIN COURSE C ON E.course = C.course;
+SELECT regno, course, cname, marks
+FROM ENROLL 
+JOIN COURSE USING(course);
 
 -- check
 SELECT * FROM StudentCourses;
