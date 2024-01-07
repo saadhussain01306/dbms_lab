@@ -145,7 +145,7 @@ WHERE NOT EXISTS (
   FROM PROJECT P
   WHERE P.DNo = 5
     AND NOT EXISTS (
-      SELECT *
+      SELECT W.PNo
       FROM WORKS_ON W
       WHERE W.SSN = E.SSN AND W.PNo = P.PNo
     )
