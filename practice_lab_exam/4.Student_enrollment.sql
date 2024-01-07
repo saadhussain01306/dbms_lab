@@ -132,7 +132,7 @@ AND
 dept NOT IN(
 	SELECT dept FROM COURSE JOIN BOOK_ADOPTION 
     USING(course) JOIN TEXT USING(book_ISBN) 
-    WHERE publisher<>'Delphi Classics'
+    WHERE publisher != 'Delphi Classics'
 );
 
 -- 4. List the students who have scored maximum marks in ‘DBMS’ course.
