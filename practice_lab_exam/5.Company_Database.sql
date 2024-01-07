@@ -4,9 +4,9 @@ USE company;
 -- Create the EMPLOYEE table
 CREATE TABLE EMPLOYEE (
     SSN INT PRIMARY KEY, -- Social Security Number of the employee
-    EName VARCHAR(35), 
-    Address VARCHAR(255),
-    Sex VARCHAR(7),
+    EName VARCHAR(100), 
+    Address VARCHAR(100),
+    Sex VARCHAR(10),
     Salary DECIMAL(10, 2),
     SuperSSN INT,
     DNo INT
