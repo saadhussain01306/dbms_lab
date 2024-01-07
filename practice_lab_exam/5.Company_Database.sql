@@ -129,6 +129,8 @@ VALUES
 -- queries
 
 -- 1. Make a list of all project numbers for projects that involve an employee whose last name 
+-- is ‘Scott’, either as a worker or as a manager of the department that controls the project.  
+
 SELECT DISTINCT P.PNo,E.Name
 FROM PROJECT P
 JOIN WORKS_ON W ON P.PNo = W.PNo
