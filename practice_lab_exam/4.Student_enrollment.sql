@@ -112,7 +112,8 @@ AND course IN (
     FROM BOOK_ADOPTION 
     GROUP BY course
     HAVING COUNT(*) > 2
-);
+)
+ORDER BY title;
 
 -- 3. List any department that has all its adopted books published by a specific publisher. 
 SELECT DISTINCT dept FROM
