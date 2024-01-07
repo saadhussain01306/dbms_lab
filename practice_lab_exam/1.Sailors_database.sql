@@ -1,5 +1,5 @@
-CREATE DATABASE sailors2;
-USE sailors2;
+CREATE DATABASE sailors;
+USE sailors;
 
 -- Create SAILORS table
 CREATE TABLE SAILORS (
@@ -21,36 +21,43 @@ CREATE TABLE RESERVES (
     sid INT,
     bid INT,
     date DATE,
-    PRIMARY KEY (sid, bid),
     FOREIGN KEY (sid) REFERENCES SAILORS(sid),
     FOREIGN KEY (bid) REFERENCES BOAT(bid)
 );
 
--- insertion
-
 -- Insert sample data for SAILORS table
 INSERT INTO SAILORS VALUES
-(101, 'Albert', 8, 30),
-(102, 'Bob', 7, 35),
-(103, 'Charlie', 9, 40),
-(104, 'David', 8, 28),
-(105, 'Eve', 7, 32);
+(1, 'Albert', 8, 41),
+(2, 'Bob', 9, 45),
+(3, 'Charlie', 9, 49),
+(4, 'David', 8, 54),
+(5, 'Eve', 7, 59);
 
 -- Insert sample data for BOAT table
 INSERT INTO BOAT VALUES
-(201, 'Boat1', 'Red'),
-(202, 'Boat2', 'Blue'),
-(203, 'Boat3', 'Green'),
-(204, 'Boat4', 'Yellow'),
-(205, 'Boat5', 'White');
+(101, 'Boat1', 'Red'),
+(102, 'Boat2', 'Blue'),
+(103, 'Boat3', 'Green'),
+(104, 'Boat4', 'Yellow'),
+(105, 'Boat5', 'White');
 
 -- Insert sample data for RESERVES table
 INSERT INTO RESERVES VALUES
-(101, 201, '2023-01-01'),
-(102, 202, '2023-02-01'),
-(103, 203, '2023-03-01'),
-(101, 204, '2023-04-01'),
-(104, 205, '2023-05-01');
+(1, 101, '2023-01-01'),
+(1, 102, '2023-02-01'),
+(1, 103, '2023-03-01'),
+(1, 104, '2023-04-01'),
+(1, 105, '2023-05-01'),
+(1, 101, '2023-01-01'),
+(2, 101, '2023-02-01'),
+(3, 101, '2023-03-01'),
+(4, 101, '2023-04-01'),
+(5, 101, '2023-05-01'),
+(2, 102, '2023-02-01'),
+(3, 103, '2023-03-01'),
+(4, 104, '2023-04-01'),
+(5, 105, '2023-05-01');
+
 
 -- queries
 -- 1. Find the colours of boats reserved by Albert 
@@ -68,6 +75,7 @@ SELECT DISTINCT s.sid
 FROM SAILORS s
 LEFT JOIN RESERVES r ON s.sid = r.sid
 WHERE s.rating >= 8 OR r.bid = 103;
+
 
 -- 3. Find the names of sailors who have not reserved a boat whose name contains the string 
 -- “storm”. Order the names in ascending order. 
@@ -96,6 +104,10 @@ SELECT sname, age
 FROM SAILORS
 ORDER BY age DESC
 LIMIT 1;
+
+-- other query
+SELECT sname,age
+FROM SAILORS WHERE age = (SELECT MAX(age) FROM SAILORS);
 
 -- 6. For each boat which was reserved by at least 5 sailors with age >= 40, find the boat id and 
 -- the average age of such sailors.
@@ -142,7 +154,8 @@ END;
 //
 DELIMITER ;
 
+
 -- check trigger
 DELETE FROM BOAT
-WHERE bid = 203;
+WHERE bid = 103;
 -- 'Cannot delete a boat with active reservations'.
