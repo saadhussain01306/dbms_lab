@@ -157,7 +157,8 @@ BEGIN
     UPDATE Order_
     SET order_amt = NEW.qty *(SELECT unitprice FROM Item WHERE item = NEW.item)
     WHERE order_ = NEW.order_;
-END //
+END ;
+//
 DELIMITER ;
 
 -- check
